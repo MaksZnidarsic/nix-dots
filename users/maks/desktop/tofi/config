@@ -1,0 +1,34 @@
+
+
+
+font = monospace
+font-size = 16
+
+text-color = #ffffff
+selection-color = #ffc5d3
+
+min-input-width = 1
+
+
+prompt-text = "> "
+
+result-spacing 0
+
+
+background-color = #000A
+
+width = 100%
+height = 100%
+
+border-width = 0
+outline-width = 0
+
+padding-left = 35%
+padding-top = 35%
+
+
+hide-cursor = true
+
+matching-algorithm = fuzzy
+
+drun-launch = true

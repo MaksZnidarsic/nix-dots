@@ -1,0 +1,92 @@
+
+
+
+* {
+    font-family : UbuntuMono Nerd Font;
+    font-size : 16px;
+    font-weight : bold;
+
+    border : none;
+    border-radius : 0;
+
+    background : transparent;
+}
+
+
+#workspaces button,
+#workspaces button.empty,
+#workspaces button.visible {
+    color : #ffffff;
+
+    border-radius : 3px 0 5px 0;
+    padding : 0 8px;
+
+    margin : 3px 0px 3px 0px;
+
+    min-width : 0;
+}
+
+#workspaces button.focused {
+    background : #ffc5d3;
+    color : #000000;
+
+    padding : 0 10px;
+}
+
+
+#network,
+#pulseaudio,
+#battery,
+#clock {
+    color : #ffffff;
+
+    padding : 0px 5px;
+    margin : 3px 0px 3px 0px;
+
+    border-radius : 3px 0px 5px 0px;
+    min-width : 0;
+}
+
+#network {
+    font-weight : normal;
+}
+
+#battery.warning:not(.charging) {
+    background : #ffff99;
+    color : #000000;
+}
+
+#battery.critical:not(.charging) {
+    background : #ff746c;
+    color : #000000;
+}
+
+
+#battery.charging {
+    background : #a6e3a1;
+    color : #000000;
+}
+
+#pulseaudio.output.hidden {
+    padding : 0;
+    margin : 0;
+    font-size : 0;
+    border : none;
+    box-shadow : none;
+    background : transparent;
+}
+
+#pulseaudio.output.shown {
+    background : transparent;
+    color : #ffffff;
+}
+
+#pulseaudio.output.warning {
+    background : #ffff99;
+    color : #000000;
+}
+
+#pulseaudio.output{ /* represents critical */
+    background : #ff746c;
+    color : #000000;
+}

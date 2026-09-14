@@ -1,0 +1,78 @@
+
+
+
+{
+
+    "layer" : "top",
+    "position" : "top",
+
+    "height" : 25,
+    "margin-right" : 3,
+    "margin-left" : 3,
+
+    "modules-left" : [
+        "sway/workspaces",
+        "tray"
+    ],
+
+    "modules-right" : [
+        "network",
+        "pulseaudio#output",
+        "pulseaudio#input",
+        "battery",
+        "clock"
+    ],
+
+
+    "sway/workspaces" : {
+        "disable-scroll" : true,
+        "format" : "{icon}",
+        "format-icons" : {
+            "1" : "i",
+            "2" : "ii",
+            "3" : "iii",
+            "4" : "iv",
+            "5" : "v",
+            "6" : "vi",
+            "7" : "vii",
+            "8" : "viii",
+            "9" : "ix",
+            "10" : "x"
+        }
+    },
+
+
+    "network" : {
+        "format-wifi" : "{essid}",
+        "format-ethernet" : "{ifname}"
+    },
+
+    "pulseaudio#output" : {
+        "format" : "vol {volume}%",
+        "format-muted" : "<s>vol</s> {volume}%",
+        "states" : {
+            "hidden" : 49,
+            "shown" : 74,
+            "warning" : 89
+        } // checks when value is smaller ==> a bit finicky
+    },
+
+    "pulseaudio#input" : {
+        "format-source-muted" : "<s>mic</s>",
+        "format-source" : "",
+        "format" : "{format_source}"
+    },
+
+    "battery" : {
+        "format" : "bat {capacity}%",
+        "states" : {
+            "critical" : 15,
+            "warning" : 30
+        }
+    },
+
+    "clock" : {
+        "format" : "{:%d %b %R}"
+    }
+
+}
