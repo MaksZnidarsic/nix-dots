@@ -20,6 +20,7 @@
         ./alacritty
         ./git
         ./neovim
+        ./vesktop
         ./vimiv
         ./zathura
     ];

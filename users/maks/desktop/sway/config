@@ -91,5 +91,5 @@ client.placeholder      #000000 #000000    #ffffff #000000   #000000
 client.background       #ffffff
 
 
-exec_always swaybg -i $HOME/nix-dots/users/maks/desktop/sway/faye.png
+exec_always swaybg -i $HOME/.config/sway/wallpaper.png
 exec_always $HOME/.config/waybar/launch.sh
