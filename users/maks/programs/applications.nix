@@ -15,7 +15,7 @@
         };
 
         vlc = {
-            name = "VLC";
+            name = "Vlc";
             exec = "vlc";
         };
     };
