@@ -5,7 +5,9 @@
 
     home.packages = with pkgs; [
         zip unzip
+        xdg-utils
         fastfetch
+        file
 
         ninja
 
@@ -23,6 +25,8 @@
         ./vesktop
         ./vimiv
         ./zathura
+
+        ./applications.nix
     ];
 
 }
