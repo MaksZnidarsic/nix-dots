@@ -61,7 +61,6 @@
     color : #000000;
 }
 
-
 #battery.charging {
     background : #a6e3a1;
     color : #000000;
@@ -86,7 +85,7 @@
     color : #000000;
 }
 
-#pulseaudio.output{ /* represents critical */
+#pulseaudio.output { /* represents critical */
     background : #ff746c;
     color : #000000;
 }

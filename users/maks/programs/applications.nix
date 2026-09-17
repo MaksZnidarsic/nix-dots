@@ -4,6 +4,11 @@
 { config, ... } : {
 
     xdg.desktopEntries = {
+        shutdown = {
+            name = "shutdown";
+            exec = "shutdown now";
+        };
+
         vesktop = {
             name = "Vesktop";
             exec = "vesktop";

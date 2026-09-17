@@ -18,7 +18,8 @@
     "modules-right" : [
         "network",
         "pulseaudio#output",
-        "pulseaudio#input",
+        "pulseaudio#output-muted",
+        "pulseaudio#input-muted",
         "battery",
         "clock"
     ],
@@ -49,7 +50,7 @@
 
     "pulseaudio#output" : {
         "format" : "vol {volume}%",
-        "format-muted" : "<s>vol</s> {volume}%",
+        "format-muted" : "",
         "states" : {
             "hidden" : 49,
             "shown" : 74,
@@ -57,7 +58,12 @@
         } // checks when value is smaller ==> a bit finicky
     },
 
-    "pulseaudio#input" : {
+    "pulseaudio#output-muted" : {
+        "format" : "",
+        "format-muted" : "<s>vol</s>"
+    },
+
+    "pulseaudio#input-muted" : {
         "format-source-muted" : "<s>mic</s>",
         "format-source" : "",
         "format" : "{format_source}"

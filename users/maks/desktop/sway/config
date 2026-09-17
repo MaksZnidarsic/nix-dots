@@ -21,6 +21,7 @@ set $menu tofi-drun --drun-launch=true
 
 
 bindsym $mod+d exec --no-startup-id tofi-drun
+
 bindsym $mod+Return exec alacritty
 bindsym $mod+p exec qutebrowser
 
