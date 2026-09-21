@@ -18,6 +18,11 @@
 
         defaultApplications = {
             "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+
+            "image/png" = "org.pwmt.zathura-pdf-mupdf.desktop";
+            "image/jpg" = "org.pwmt.zathura-pdf-mupdf.desktop";
+            "image/svg+xml" = "org.pwmt.zathura-pdf-mupdf.desktop";
+
             "text/html" = "org.qutebrowser.qutebrowser.desktop";
         };
     };

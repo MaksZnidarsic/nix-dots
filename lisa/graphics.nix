@@ -6,7 +6,6 @@
     programs.sway = {
         enable = true;
         extraPackages = with pkgs; lib.mkForce [
-            #wmenu # chooser for dbus
             slurp
         ];
     };

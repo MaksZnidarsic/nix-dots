@@ -1,15 +1,12 @@
 
 
 
-{ pkgs, ... } : {
+{ lib, pkgs, ... } : {
 
     programs.bash = {
         enable = true;
-        bashrcExtra = ''
-            export PS1=' \033[1;35m\w\033[0m ';
 
-            tput cup $LINES 0
-        '';
+        bashrcExtra = lib.readFile ./bashrc;
 
         profileExtra = ''
             sway

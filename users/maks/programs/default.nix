@@ -5,6 +5,7 @@
 
     home.packages = with pkgs; [
         zip unzip
+        brightnessctl
         xdg-utils
         fastfetch
         file
@@ -15,6 +16,7 @@
         gcc cmake
 
         qutebrowser
+        vlc
     ];
 
     imports = [
@@ -22,9 +24,7 @@
         ./git
         ./neovim
         ./network-manager-applet
-        ./qutebrowser
         ./vesktop
-        ./vlc
         ./zathura
 
         ./applications.nix
