@@ -15,15 +15,17 @@
         gcc cmake
 
         qutebrowser
-        vlc
     ];
 
     imports = [
         ./alacritty
         ./git
         ./neovim
+        ./network-manager-applet
+        ./qutebrowser
         ./vesktop
         ./vimiv
+        ./vlc
         ./zathura
 
         ./applications.nix

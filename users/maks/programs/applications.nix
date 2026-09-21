@@ -1,27 +1,15 @@
 
 
 
-{ config, ... } : {
+{ config, lib, ... } : {
 
-    xdg.desktopEntries = {
+    # .desktop files are in
+    # /etc/profiles/per-user/<user>/share/applications
+    # /run/current-system/sw/share/applications
+    xdg.desktopEntries = lib.mkForce {
         shutdown = {
-            name = "shutdown";
+            name = "Shutdown";
             exec = "shutdown now";
-        };
-
-        vesktop = {
-            name = "Vesktop";
-            exec = "vesktop";
-        };
-
-        vimiv = {
-            name = "Vimiv";
-            exec = "vimiv";
-        };
-
-        vlc = {
-            name = "Vlc";
-            exec = "vlc";
         };
     };
 
@@ -29,8 +17,8 @@
         enable = true;
 
         defaultApplications = {
-            "application/pdf" = "zathura.desktop";
-            "text/html" = "qutebrowser.desktop";
+            "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+            "text/html" = "org.qutebrowser.qutebrowser.desktop";
         };
     };
 

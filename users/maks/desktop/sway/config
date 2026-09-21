@@ -92,5 +92,10 @@ client.placeholder      #000000 #000000    #ffffff #000000   #000000
 client.background       #ffffff
 
 
+# important vvv
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP  
+exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
+exec swaymsg -t subscribe '["shutdown"]' && systemctl --user stop sway-session.target
+
 exec_always swaybg -i $HOME/.config/sway/wallpaper.png
 exec_always $HOME/.config/waybar/launch.sh

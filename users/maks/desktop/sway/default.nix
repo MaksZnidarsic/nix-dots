@@ -1,7 +1,7 @@
 
 
 
-{ config, pkgs, ... } : {
+{ config, lib, pkgs, ... } : {
 
     wayland.windowManager.sway = {
         enable = true;
@@ -19,5 +19,12 @@
     home.packages = with pkgs; [
         pulseaudio swaybg
     ];
+
+
+    /*
+    home.sessionVariables = {
+        NIXOS_OZONE_WL = "1";
+    };
+    */
 
 }

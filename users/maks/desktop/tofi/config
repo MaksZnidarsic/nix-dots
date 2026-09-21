@@ -12,8 +12,6 @@ min-input-width = 1
 
 prompt-text = "> "
 
-result-spacing 0
-
 
 background-color = #000A
 
@@ -28,7 +26,5 @@ padding-top = 35%
 
 
 hide-cursor = true
-
-matching-algorithm = fuzzy
 
 drun-launch = true

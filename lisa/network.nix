@@ -13,10 +13,6 @@
         };
     };
 
-    environment.systemPackages = with pkgs; [
-        networkmanagerapplet
-    ];
-
     networking.wireless = {
         enable = false;
         iwd.enable = true;

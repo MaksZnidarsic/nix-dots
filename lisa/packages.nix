@@ -6,10 +6,12 @@
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
-        git killall gnumake pkg-config tree wget
+        git gnumake killall pkg-config tree wget
 
         python3
     ];
+
+    services.locate.enable = true;
 
     programs.vim = {
         enable = true;
@@ -17,6 +19,7 @@
 
         package = (pkgs.vim.override {}).customize {
             name = "vim";
+            standalone = true;
             vimrcConfig.customRC = ''
                 syntax enable
                 colorscheme default

@@ -1,10 +1,10 @@
 
 
 
-{ pkgs, ... } : {
+{ config, pkgs, ... } : {
 
     home.packages = with pkgs; [
-        vimiv-qt
+        vlc
     ];
 
 }
