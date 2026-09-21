@@ -7,4 +7,8 @@
         qutebrowser
     ];
 
+    xdg.desktopEntries."org.qutebrowser.qutebrowser" = {
+        name = "Qutebrowser";
+    };
+
 }

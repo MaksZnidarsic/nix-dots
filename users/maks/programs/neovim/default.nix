@@ -17,7 +17,8 @@
         ripgrep
     ];
 
-    xdg.desktopEntries.neovim = {
+    xdg.desktopEntries.nvim = {
+        name = "Neovim";
         noDisplay = true;
     };
 

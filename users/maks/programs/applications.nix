@@ -6,7 +6,7 @@
     # .desktop files are in
     # /etc/profiles/per-user/<user>/share/applications
     # /run/current-system/sw/share/applications
-    xdg.desktopEntries = lib.mkForce {
+    xdg.desktopEntries = {
         shutdown = {
             name = "Shutdown";
             exec = "shutdown now";

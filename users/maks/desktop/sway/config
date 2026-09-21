@@ -21,8 +21,8 @@ set $menu tofi-drun --drun-launch=true
 
 
 bindsym $mod+d exec --no-startup-id tofi-drun
-bindsym $mod+s exec --no-startup-id grim -g "$(slurp)" $HOME/screenshots/$(date +"%Y-%m-%d-%H%M%S.png") \
-        && cat $(ls -1 $HOME/screenshots | tail -n 1) | wl-copy # copies the last file to clipboard
+bindsym $mod+s exec --no-startup-id\
+    '(f=$HOME/screenshots/$(date +'%Y-%m-%d-%H%M%S.png'); grim -g "$(slurp)" $f && cat $f | wl-copy)'
 
 bindsym $mod+Return exec alacritty
 bindsym $mod+p exec qutebrowser
