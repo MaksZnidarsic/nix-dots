@@ -21,6 +21,8 @@ set $menu tofi-drun --drun-launch=true
 
 
 bindsym $mod+d exec --no-startup-id tofi-drun
+bindsym $mod+s exec --no-startup-id grim -g "$(slurp)" $HOME/screenshots/$(date +"%Y-%m-%d-%H%M%S.png") \
+        && cat $(ls -1 $HOME/screenshots | tail -n 1) | wl-copy # copies the last file to clipboard
 
 bindsym $mod+Return exec alacritty
 bindsym $mod+p exec qutebrowser
@@ -91,11 +93,6 @@ client.urgent           #ffff99 #ffff99    #ffffff #ffff99   #ffff99
 client.placeholder      #000000 #000000    #ffffff #000000   #000000
 client.background       #ffffff
 
-
-# important vvv
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP  
-exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
-exec swaymsg -t subscribe '["shutdown"]' && systemctl --user stop sway-session.target
 
 exec_always swaybg -i $HOME/.config/sway/wallpaper.png
 exec_always $HOME/.config/waybar/launch.sh

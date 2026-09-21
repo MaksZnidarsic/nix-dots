@@ -24,7 +24,6 @@
         ./network-manager-applet
         ./qutebrowser
         ./vesktop
-        ./vimiv
         ./vlc
         ./zathura
 

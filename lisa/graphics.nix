@@ -1,39 +1,20 @@
 
 
 
-{ config, pkgs, ... } : {
+{ config, lib, pkgs, ... } : {
 
-    #programs.sway.enable = true;
-
-    # sway stuff
-    security.polkit.enable = true;
-    hardware.graphics.enable = true;
-
-    xdg.portal = { # TODO figure out how to do this via home manager
+    programs.sway = {
         enable = true;
-        xdgOpenUsePortal = true;
-
-        wlr.enable = true;
-        extraPortals = with pkgs; [
-            xdg-desktop-portal
-            xdg-desktop-portal-gtk
+        extraPackages = with pkgs; lib.mkForce [
+            #wmenu # chooser for dbus
+            slurp
         ];
-
-        config.sway = {
-            default = [ "gtk" ];
-            "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
-            "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
-        };
     };
-    environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
 
-    /*
-    environment.systemPackages = with pkgs; [
-        wmenu # output chooser for desktop portal
-        wofi
-        mew
-        fuzzel
-    ];
-    */
+    xdg.portal.wlr.settings.screencast = {
+        output_name = "eDP-1";
+        chooser_type = "simple";  
+        chooser_cmd = "${pkgs.slurp}/bin/slurp -f 'Monitor: %o' -or";  
+    };  
 
 }
