@@ -9,6 +9,7 @@
         xdg-utils
         fastfetch
         file
+        libnotify
 
         ninja
 
