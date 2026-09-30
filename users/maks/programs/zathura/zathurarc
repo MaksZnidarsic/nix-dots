@@ -1,0 +1,9 @@
+
+
+
+set guioptions "shv"
+
+set font "monospace normal 14"
+
+
+set statusbar-home-tilde true

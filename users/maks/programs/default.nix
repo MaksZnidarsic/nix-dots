@@ -4,18 +4,22 @@
 { pkgs, ... } : {
 
     home.packages = with pkgs; [
-        zip unzip
         brightnessctl
-        xdg-utils
         fastfetch
         file
         libnotify
-
         ninja
+        xdg-utils
+        yt-dlp
+        zip unzip
 
         cargo
         gcc cmake
+        typst
 
+        gimp
+        libreoffice-qt # might add dependencies later (wiki)
+        networkmanagerapplet
         qutebrowser
         vlc
     ];
@@ -24,7 +28,7 @@
         ./alacritty
         ./git
         ./neovim
-        ./network-manager-applet
+        ./tex
         ./vesktop
         ./zathura
 

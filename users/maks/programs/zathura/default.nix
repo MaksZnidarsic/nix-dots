@@ -3,6 +3,10 @@
 
 { pkgs, ... } : {
 
-    programs.zathura.enable = true;
+    home.packages = with pkgs; [
+        zathura
+    ];
+
+    home.file.".config/zathura/zathurarc".source = ./zathurarc;
 
 }
