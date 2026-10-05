@@ -7,8 +7,6 @@
 
     environment.systemPackages = with pkgs; [
         git gnumake killall pkg-config tree wget
-
-        python3
     ];
 
     services.locate.enable = true;

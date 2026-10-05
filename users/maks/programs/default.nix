@@ -13,8 +13,8 @@
         yt-dlp
         zip unzip
 
-        cargo
         gcc cmake
+        rustc cargo
         typst
 
         gimp
@@ -28,6 +28,7 @@
         ./alacritty
         ./git
         ./neovim
+        ./python
         ./tex
         ./vesktop
         ./zathura

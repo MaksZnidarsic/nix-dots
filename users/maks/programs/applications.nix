@@ -22,6 +22,7 @@
             "application/epub+zip" = "org.pwmt.zathura-pdf-mupdf.desktop";
             "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
 
+            "image/jpeg" = "org.pwmt.zathura-pdf-mupdf.desktop";
             "image/jpg" = "org.pwmt.zathura-pdf-mupdf.desktop";
             "image/png" = "org.pwmt.zathura-pdf-mupdf.desktop";
             "image/svg+xml" = "org.pwmt.zathura-pdf-mupdf.desktop";

@@ -21,7 +21,7 @@ set $menu tofi-drun --drun-launch=true
 
 
 bindsym $mod+d exec --no-startup-id tofi-drun
-bindsym $mod+s exec --no-startup-id\
+bindsym $mod+s exec --no-startup-id \
     '(f=$HOME/screenshots/$(date +'%Y-%m-%d-%H%M%S.png'); grim -g "$(slurp)" $f && cat $f | wl-copy)'
 
 bindsym $mod+Return exec alacritty
@@ -94,7 +94,7 @@ client.placeholder      #000000 #000000    #ffffff #000000   #000000
 client.background       #ffffff
 
 
-exec_always swaybg -i $HOME/.config/sway/wallpaper.png
+exec_always $HOME/.config/wallpaper/launch.sh
 exec_always $HOME/.config/waybar/launch.sh
 
 

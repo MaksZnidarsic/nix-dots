@@ -4,14 +4,13 @@
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 function venv_prompt() {
+    prompt=""
     if [[ -n "$VIRTUAL_ENV" ]]; then
         prompt=" ${VIRTUAL_ENV##*/}"
-    else
-        prompt=""
     fi
     echo "$prompt"
 }
 
-export PS1='\033[34m$(venv_prompt) \033[1;35m\w\033[0m '
+export PS1='\033[1;34m$(venv_prompt) \033[1;35m\w\033[0m '
 
 tput cup $LINES 0

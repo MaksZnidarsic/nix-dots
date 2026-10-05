@@ -9,21 +9,14 @@
         ./audio.nix
         ./boot.nix
         ./fonts.nix
+        ./garbage-collection.nix
         ./graphics.nix
         ./language.nix
         ./network.nix
         ./packages.nix
+        ./time.nix
         ./users.nix
     ];
-
-
-    time.timeZone = "Europe/Paris";
-
-    nix.gc = {
-        automatic = lib.mkDefault true;
-        dates = lib.mkDefault "weekly";
-        options = lib.mkDefault "--delete-older-than 7d";
-    };
 
     programs.nix-ld.enable = true;
 

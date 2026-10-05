@@ -8,6 +8,7 @@
         ./shell
         ./sway
         ./tofi
+        ./wallpaper
         ./waybar
     ];
 

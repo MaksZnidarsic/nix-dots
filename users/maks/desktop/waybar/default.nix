@@ -13,4 +13,6 @@
         executable = true;
     };
 
+    # https://mil.ad/blog/2026/toggle-waybar-module-visibility.html
+
 }
