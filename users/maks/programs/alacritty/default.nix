@@ -3,10 +3,11 @@
 
 { pkgs, ... } : {
 
-    programs.alacritty = {
-        enable = true;
+    home.packages = with pkgs; [
+        alacritty
+    ];
 
-        settings = import ./config.nix;
-    };
+    home.file.".config/alacritty/alacritty.toml".source = ./config.toml;
+    home.file.".config/alacritty/theme.toml".source = ./theme.toml;
 
 }
