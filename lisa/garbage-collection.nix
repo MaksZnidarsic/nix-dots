@@ -5,8 +5,8 @@
 
     nix.gc = {
         automatic = lib.mkDefault true;
-        dates = lib.mkDefault "weekly";
-        options = lib.mkDefault "--delete-older-than 7d";
+        dates = lib.mkDefault "Mon,Fri"; # biweekly
+        options = lib.mkDefault "--delete-older-than 3d";
     };
 
 }
