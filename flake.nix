@@ -6,10 +6,15 @@
     description = "";
 
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; #-26.05";
+
+        swayfx = {
+            url = "github:wlrfx/swayfx";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         home-manager = {
-            url = "github:nix-community/home-manager/release-26.05";
+            url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };

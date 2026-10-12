@@ -6,7 +6,9 @@
     nixpkgs.config.allowUnfree = true;
 
     environment.systemPackages = with pkgs; [
-        git gnumake killall pkg-config tree wget
+        git gnumake killall net-tools pkg-config tree wget
+
+        slurp # for wlr portal
     ];
 
     services.locate.enable = true;

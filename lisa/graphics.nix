@@ -3,12 +3,14 @@
 
 { config, lib, pkgs, ... } : {
 
+    /*
     programs.sway = {
         enable = true;
         extraPackages = with pkgs; lib.mkForce [
             slurp
         ];
     };
+    */
 
     xdg.portal.wlr.settings.screencast = {
         output_name = "eDP-1";

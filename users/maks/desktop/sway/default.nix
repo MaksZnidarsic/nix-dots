@@ -3,10 +3,12 @@
 
 { config, lib, pkgs, ... } : {
 
-    home.file.".config/sway/config".source = ./config;
-
     home.packages = with pkgs; [
-        grim pulseaudio slurp wl-clipboard
+        swayfx
+
+        brightnessctl grim jq pulseaudio slurp wl-clipboard
     ];
+
+    home.file.".config/sway/config".source = ./config;
 
 }

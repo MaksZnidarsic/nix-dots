@@ -4,7 +4,6 @@
 { pkgs, ... } : {
 
     home.packages = with pkgs; [
-        brightnessctl
         fastfetch
         file
         libnotify
@@ -21,6 +20,7 @@
         libreoffice-qt # might add dependencies later (wiki)
         networkmanagerapplet
         qutebrowser
+        transmission_4-qt
         vlc
     ];
 

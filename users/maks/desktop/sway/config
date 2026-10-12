@@ -20,12 +20,17 @@ set $term alacritty
 set $menu tofi-drun --drun-launch=true
 
 
-bindsym $mod+d exec --no-startup-id tofi-drun
-bindsym $mod+s exec --no-startup-id \
-    '(f=$HOME/screenshots/$(date +'%Y-%m-%d-%H%M%S.png'); grim -g "$(slurp)" $f && cat $f | wl-copy)'
-
 bindsym $mod+Return exec alacritty
+bindsym $mod+d exec --no-startup-id tofi-drun
 bindsym $mod+p exec qutebrowser
+
+bindsym $mod+s exec --no-startup-id \
+    '(f=$HOME/screenshots/$(date +%Y-%m-%d-%H%M%S.png); grim -g "$(slurp)" $f && cat $f | wl-copy)'
+
+# allow only down to 5%
+bindsym $mod+F6 exec --no-startup-id \
+    'if [ "$(($(brightnessctl get) * 20))" -gt "$(brightnessctl max)" ]; then brightnessctl set 5%-; fi'
+bindsym $mod+F7 exec --no-startup-id brightnessctl set +5%
 
 bindsym $mod+F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -81,9 +86,15 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 
-default_border pixel 1
+default_border pixel 2
 
 gaps inner 3
+corner_radius 4
+
+animation_duration_ms 200
+
+#blur enabled
+#blur_noise 0.005
 
 #                       border  background text    indicator child
 client.focused          #ffc5d3 #ffc5d3    #ffffff #ffc5d3   #ffc5d3
