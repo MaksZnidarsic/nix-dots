@@ -12,6 +12,8 @@
     };
     */
 
+    hardware.graphics.enable = true;
+
     xdg.portal.wlr.settings.screencast = {
         output_name = "eDP-1";
         chooser_type = "simple";  

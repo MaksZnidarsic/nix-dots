@@ -11,6 +11,7 @@ function venv_prompt() {
     echo "$prompt"
 }
 
-export PS1='\033[1;34m$(venv_prompt) \033[1;35m\w\033[0m '
+#export PS1='\033[1;34m$(venv_prompt) \033[1;35m\w\033[0m '
+export PS1='\[\e[1;34m\]$(venv_prompt) \[\e[1;35m\]\w\[\e[m\] '
 
 tput cup $LINES 0
