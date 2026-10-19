@@ -4,6 +4,7 @@
 {
 
     imports = [
+        ./eww
         ./mako
         ./shell
         ./sway

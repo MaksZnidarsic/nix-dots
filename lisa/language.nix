@@ -15,7 +15,7 @@
         LC_NUMERIC = "sl_SI.UTF-8";
         LC_PAPER = "sl_SI.UTF-8";
         LC_TELEPHONE = "sl_SI.UTF-8";
-        LC_TIME = "sl_SI.UTF-8";
+        #LC_TIME = "sl_SI.UTF-8";
     };
 
 }

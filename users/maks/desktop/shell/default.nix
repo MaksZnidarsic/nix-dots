@@ -14,7 +14,7 @@
 
         shellAliases = {
             clear = "clear; tput cup $LINES 0";
-            ls = "ls --all --color=auto";
+            ls = "ls --almost-all --color=auto";
         };
     };
 

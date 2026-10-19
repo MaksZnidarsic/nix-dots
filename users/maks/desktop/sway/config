@@ -93,9 +93,6 @@ corner_radius 4
 
 animation_duration_ms 200
 
-#blur enabled
-#blur_noise 0.005
-
 #                       border  background text    indicator child
 client.focused          #ffc5d3 #ffc5d3    #ffffff #ffc5d3   #ffc5d3
 client.focused_inactive #000000 #000000    #ffffff #000000   #000000
