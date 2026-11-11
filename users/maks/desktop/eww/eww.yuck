@@ -1,0 +1,247 @@
+
+
+
+; bar
+
+
+(defwindow bar []
+  :monitor 0
+  :exclusive true
+  :geometry (geometry
+    :x '0'
+    :y '0'
+    :width '0'
+    :height '100%'
+    :anchor 'center right'
+  )
+  (bar)
+)
+
+
+(defwidget bar []
+  (box
+    :orientation 'v'
+    :space-evenly false
+    (workspaces)
+    (box :vexpand true)
+    (time)
+    (box :vexpand true)
+    (volume)
+    (brightness)
+    (battery)
+  )
+)
+
+
+(deflisten workspaces :initial '${[]}' 'scripts/workspaces')
+(defwidget workspaces []
+  (box
+    :space-evenly false
+    :valign 'start'
+    :orientation 'v'
+    (for x in workspaces (button
+      :onclick 'swaymsg workspace ${x.name}'
+      :class { 'workspace ' + ( x.focused ? 'focused' : x.active ? 'active' : '') }
+    ))
+  )
+)
+
+
+(defpoll time-string :interval '1s' '$HOME/.config/eww/scripts/time')
+(defwidget time []
+  (box
+    :space-evenly false
+    :orientation 'v'
+    (for x in { jq('"${time-string}"', 'split("")') } (box
+      :class { 'time ' + x }
+    ))
+  )
+)
+
+
+; defining wrappers as they are being reused in indicator
+(deflisten audio :initial '{"volume":0}' 'scripts/audio')
+(defwidget volume []
+  (status-bar
+    :value { audio.volume }
+    :bottom false
+    :extra { audio.sink + (audio.volume > 100 ? ' critical' : '') }
+  )
+)
+
+
+(deflisten brightness :initial 0 'scripts/brightness')
+(defwidget brightness []
+  (status-bar :value brightness :bottom false :extra '')
+)
+
+
+(defpoll battery :initial '{"capacity":0}' :interval '1s' 'scripts/battery')
+(defwidget battery []
+  (status-bar :value { battery.capacity } :bottom true :extra { battery.state })
+)
+
+
+(defvar segments { jq('{}', '[range(1;21)] | reverse') })
+(defwidget status-bar [value bottom extra] ; value in %
+  (box
+    :space-evenly false
+    :orientation 'v'
+    :class { bottom ? '' : 'high' }
+    (for x in segments (box
+      :class { 'segment ' + (x * 5 <= value ? 'active' : '') + ' ' + extra }
+    ))
+  )
+)
+
+
+; indicator
+; has to be disabled in scripts + launch.sh
+
+
+(defwindow indicator []
+  :monitor 0
+  :stacking 'overlay'
+  :geometry (geometry
+    :x '-2'
+    :y '0'
+    :width '0'
+    :height '100%'
+    :anchor 'bottom right'
+  )
+  (box
+    :orientation 'v'
+    :space-evenly false
+    (indicator :open workspaces-open (workspaces))
+    (box :vexpand true)
+    (indicator :open volume-open (volume))
+    (indicator :open brightness-open (brightness))
+    (indicator :open false (battery))
+  )
+)
+
+
+(defvar workspaces-open false)
+(defvar volume-open false)
+(defvar brightness-open false)
+(defwidget indicator [open]
+  (box
+    :style 'opacity : ${open ? 100 : 0};'
+    (children)
+  )
+)
+
+
+; system
+
+
+(defwindow telemetry
+  :monitor 0
+  :stacking 'overlay'
+  :geometry (geometry
+    :x '0'
+    :y '0'
+    :width '0'
+    :height '0'
+    :anchor 'bottom center'
+  )
+  (box
+    :space-evenly false
+    (cpu)
+    (label :markup '\ ')
+    (ram)
+    (label :markup '\ ')
+    (disk)
+    (label :markup '\ ')
+    (battery-exact)
+    (label :markup '\ ')
+    (wifi)
+    ; TODO add a space when tray is active
+    (tray)
+  )
+)
+
+
+(defwidget cpu []
+  (box
+    :halign 'start'
+    :space-evenly false
+    'cpu ' (cpu-usage) (label :markup '\ ') (cpu-temperature)
+  )
+)
+
+
+(defwidget cpu-usage []
+  (box
+    :space-evenly false
+    (box
+      :class {'sensor ' + (
+        EWW_CPU.avg >= 95 ? 'critical' :
+        EWW_CPU.avg >= 80 ? 'urgent' :
+        EWW_CPU.avg >= 60 ? 'warning' : ''
+      )}
+      '${round(EWW_CPU.avg, 1)}%'
+    )
+  )
+)
+
+
+(defwidget cpu-temperature []
+  (box
+    :space-evenly false
+    :class {'sensor ' + (
+      EWW_TEMPS.CORETEMP_PACKAGE_ID_0 >= 90 ? 'critical' :
+      EWW_TEMPS.CORETEMP_PACKAGE_ID_0 >= 80 ? 'urgent' :
+      EWW_TEMPS.CORETEMP_PACKAGE_ID_0 >= 65 ? 'warning' : ''
+    )}
+    '${EWW_TEMPS.CORETEMP_PACKAGE_ID_0} deg C'
+  )
+)
+
+
+(defwidget ram []
+  (box
+    :space-evenly false
+    'ram '
+    (box
+      :class {'sensor' + (
+        EWW_RAM.used_mem_perc >= 95 ? 'critical' :
+        EWW_RAM.used_mem_perc >= 85 ? 'urgent' :
+        EWW_RAM.used_mem_perc >= 70 ? 'warning' : ''
+      )}
+      '${round(EWW_RAM.used_mem_perc, 1)}%'
+    )
+  )
+)
+
+
+(defwidget disk []
+  (box
+    'disk ${round(EWW_DISK['/nix/store'].used_perc, 1)}%'
+  )
+)
+
+
+(defwidget battery-exact []
+  (box
+    :class { 'sensor ' + battery.state }
+    'bat ${battery.capacity}%'
+  )
+)
+
+
+(defpoll wifi :initial '{}' :interval '1s' 'scripts/network')
+(defwidget wifi []
+  (box
+    '${wifi.name} ${wifi.strength}'
+  )
+)
+
+
+(defwidget tray []
+  (systray
+    :class 'tray'
+    :spacing 8
+    :icon-size 12
+  )
+)

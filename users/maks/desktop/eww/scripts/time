@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+
+
+hour=$(date +%H)
+minute=$(date +%M)
+day=$(date +%d)
+month=$(date +%m)
+
+
+# only supports numbers < 60
+function roman() {
+    ones=('' 'i' 'ii' 'iii' 'iv' 'v' 'vi' 'vii' 'viii' 'ix') 
+    tens=('' 'x' 'xx' 'xxx' 'xl' 'l' )
+    p=$((10#$1 / 10))
+    q=$((10#$1 % 10))
+    echo ${tens[$p]}${ones[$q]}
+}
+
+
+echo "$(roman $hour) $(roman $minute) $(roman $day) $(roman $month)"

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+
+
+function info() {
+    current=$(brightnessctl get)
+    max=$(brightnessctl max)
+    echo $((current * 100 / max))
+}
+
+
+info
+udevadm monitor --udev --subsystem-match=backlight | {
+    while read -r _ _ c _; do
+        if [ "$c" != 'change' ]; then continue; fi
+        info
+        $HOME/.config/eww/scripts/indicator brightness &
+    done
+}

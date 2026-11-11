@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+
+
+function info() { # does not work w/o echo
+    echo $(swaymsg -t get_workspaces | jq '
+        map({name : (.name | tonumber), focused : .focused, active : true})
+        | . + [foreach range(1;11) as $i ([]; [];
+            {name : $i, focused : false, active : false}
+        )]
+        | unique_by(.name)
+    ')
+    # unique sorts the array and chooses the value with the lower index
+    # to get just the active workspaces remove everything after map(...)
+}
+
+
+info
+swaymsg -t subscribe '["workspace"]' --monitor | while read -r event; do
+    info
+    $HOME/.config/eww/scripts/indicator workspaces 2>/dev/null &
+done

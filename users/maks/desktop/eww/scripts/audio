@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+
+
+function volume() { # assumes both sides have the same volume
+    pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1
+}
+
+
+function sink_state() {
+    [ "$(pactl get-sink-mute @DEFAULT_SINK@)" = 'Mute: yes' ] && echo 'muted' && exit
+    echo 'not-muted'
+}
+
+
+function source_state() {
+    [ "$(pactl get-source-mute @DEFAULT_SOURCE@)" = 'Mute: yes' ] && echo 'muted' && exit
+    echo 'not-muted'
+}
+
+
+function info() {
+    echo \{\"volume\":$(volume),\"sink\":\"$(sink_state)\",\"source\":\"$(source_state)\"\}
+}
+
+
+info
+
+last=""
+pactl subscribe | while read -r _ event _ t num; do  
+    if [ "$t" != 'sink' ] && [ "$t" != 'source' ]; then continue; fi
+    info
+    if [[ $(volume) = $last ]]; then continue; fi  
+    last=$(volume)  
+    $HOME/.config/eww/scripts/indicator volume &
+done

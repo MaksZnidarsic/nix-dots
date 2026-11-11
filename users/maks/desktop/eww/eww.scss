@@ -1,0 +1,150 @@
+
+
+
+// https://docs.gtk.org/gtk4/css-properties.html
+
+$fg : #ffffff;
+$bg : #000000;
+
+$fg_alt : #000000;
+$bg_alt : #252525;
+
+$subtle : #808080;
+
+$color1 : #c5c2da;
+$color2 : #b198d9;
+$color3 : #67609f;
+$color4 : #ffff99;
+$color5 : #ff964f;
+
+$ok : #a6e3a1;
+$info : #b4cbf0;
+$warning : #ffff99;
+$error : #ff746c;
+
+
+* {
+  all : unset;
+  font-family : UbuntuMono Nerd Font;
+  font-size : 16px;
+}
+
+
+// bar
+
+
+.bar {
+  min-width : 2px;
+  background-color : transparent;
+}
+
+
+.workspace {
+  min-height : 15px;
+  margin-bottom : 5px;
+}
+
+.workspace.active {
+  background-color : $color1;
+}
+
+.workspace.focused {
+  background-color : $color3;
+}
+
+
+.time {
+  margin-bottom : 5px;
+  min-height : 5px; // + 2 * margin = space in between modules
+}
+
+.time.i {
+  background-color : $color1;
+  min-height : 10px;
+}
+
+.time.v {
+  background-color : $color3;
+  min-height : 10px;
+}
+
+.time.x {
+  background-color : $color1;
+  min-height : 20px;
+}
+
+.time.l {
+  background-color : $color3;
+  min-height : 20px;
+}
+
+
+.high {
+  margin-bottom : 5px;
+}
+
+.segment {
+  min-height : 5px;
+}
+
+.segment.active {
+  background-color : $color1;
+}
+
+.segment.active.charging {
+  background-color : $ok;
+}
+
+.segment.active.full, .segment.active.muted {
+  background-color : $color3;
+}
+
+.segment.active.warning {
+  background-color : $warning;
+}
+
+.segment.active.urgent {
+  background-color : $color5;
+}
+
+.segment.active.critical {
+  background-color : $error;
+}
+
+
+// indicator
+
+
+.indicator {
+  min-width : 3px;
+}
+
+
+// telemetry
+
+
+.telemetry {
+  background-color : $bg;
+  padding : 5px;
+}
+
+
+.sensor.charging {
+  color : $ok;
+}
+
+.sensor.full {
+  color : $color3;
+}
+
+.sensor.warning {
+  color : $warning;
+}
+
+.sensor.urgent {
+  color : $color5;
+}
+
+.sensor.critical {
+  color : $error;
+}

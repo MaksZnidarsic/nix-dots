@@ -10,7 +10,6 @@
         ./sway
         ./tofi
         ./wallpaper
-        ./waybar
     ];
 
 }

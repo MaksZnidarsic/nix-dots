@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+battery=/sys/class/power_supply/BAT0/
+capacity=$(cat $battery/capacity)
+battery_status=$(cat $battery/status)
+
+
+function state() {
+    [ $battery_status = Full ] && echo 'full' && exit
+    [ $battery_status = Charging ] && echo 'charging' && exit
+    [ $percent -le 5 ] && echo 'critical' && exit
+    [ $percent -le 15 ] && echo 'urgent' && exit
+    [ $percent -le 30 ] && echo 'warning' && exit
+    echo ''
+}
+
+echo \{\"capacity\":$capacity,\"state\":\"$(state)\"\}

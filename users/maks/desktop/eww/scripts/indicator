@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+
+state=$HOME/.config/eww/state
+mkdir -p $state
+
+eww active-windows | grep -q indicator || eww open indicator
+# eww update indicator-open=true
+eww update $1-open=true
+
+echo $$ > $state/$1
+
+sleep 1 #s = full time (- animation time --- currently no animations)
+if [ $(cat $state/$1) != $$ ]; then exit; fi
+
+rm -f $state/$1
+eww update $1-open=false
+# sleep 0.5 #s = animation time
+
+# switched to using a boolean expression
+# if [ ! $(ls -A $state) ]; then eww update indicator-open=false; fi
