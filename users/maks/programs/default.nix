@@ -6,9 +6,11 @@
     home.packages = with pkgs; [
         cbonsai
         fastfetch
+        ffmpeg
         file
         libnotify
         ninja
+        pandoc
         xdg-utils
         yt-dlp
         zip unzip
@@ -22,8 +24,8 @@
         gimp
         libreoffice-qt # might add dependencies later (wiki)
         networkmanagerapplet
-        qutebrowser
         stremio-linux-shell
+        qutebrowser
         transmission_4-qt
         vlc
     ];

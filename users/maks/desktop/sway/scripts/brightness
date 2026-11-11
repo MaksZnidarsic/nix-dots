@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+function increase() {
+    brightnessctl set +5%
+}
+
+
+function decrease() {
+    if [ "$(($(brightnessctl get) * 20))" -gt "$(brightnessctl max)" ]; then
+        brightnessctl set 5%-;
+    fi
+}
+
+
+[ $1 = 'increase' ] && increase && exit
+[ $1 = 'decrease' ] && decrease && exit

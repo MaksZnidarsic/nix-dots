@@ -1,14 +1,17 @@
 
 
 
+input type:keyboard {
+    xkb_layout si
+}
+
 input type:touchpad {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
-}
 
-input type:keyboard {
-    xkb_layout si
+    accel_profile flat
+    pointer_accel 1.0
 }
 
 focus_follows_mouse no
@@ -20,23 +23,24 @@ set $term alacritty
 set $menu tofi-drun --drun-launch=true
 
 
-bindsym $mod+Return exec alacritty
-bindsym $mod+d exec --no-startup-id tofi-drun
+bindsym $mod+Return exec $term
+bindsym $mod+d exec --no-startup-id $menu
 bindsym $mod+p exec qutebrowser
 
-bindsym $mod+s exec --no-startup-id \
-    '(f=$HOME/screenshots/$(date +%Y-%m-%d-%H%M%S.png); grim -g "$(slurp)" $f && cat $f | wl-copy)'
+bindsym $mod+s exec --no-startup-id $HOME/.config/sway/scripts/screenshot select
+bindsym $mod+F10 exec --no-startup-id $HOME/.config/sway/scripts/screenshot screen
 
-# allow only down to 5%
-bindsym $mod+F6 exec --no-startup-id \
-    'if [ "$(($(brightnessctl get) * 20))" -gt "$(brightnessctl max)" ]; then brightnessctl set 5%-; fi'
-bindsym $mod+F7 exec --no-startup-id brightnessctl set +5%
+bindsym $mod+c exec eww open --toggle telemetry
 
 bindsym $mod+F1 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+F2 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+F4 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
+# TODO F5 to turn off keyboard lights
+
+bindsym $mod+F6 exec --no-startup-id $HOME/.config/sway/scripts/brightness decrease
+bindsym $mod+F7 exec --no-startup-id $HOME/.config/sway/scripts/brightness increase
 
 bindsym $mod+q kill
 bindsym $mod+Shift+r reload
@@ -94,7 +98,7 @@ corner_radius 4
 animation_duration_ms 200
 
 #                       border  background text    indicator child
-client.focused          #ffc5d3 #ffc5d3    #ffffff #ffc5d3   #ffc5d3
+client.focused          #b198d9 #b198d9    #ffffff #b198d9   #b198d9
 client.focused_inactive #000000 #000000    #ffffff #000000   #000000
 client.unfocused        #000000 #000000    #ffffff #000000   #000000
 client.urgent           #ffff99 #ffff99    #ffffff #ffff99   #ffff99
@@ -102,14 +106,17 @@ client.placeholder      #000000 #000000    #ffffff #000000   #000000
 client.background       #ffffff
 
 
+exec_always mako
 exec_always $HOME/.config/wallpaper/launch.sh
-exec_always $HOME/.config/waybar/launch.sh
+exec_always $HOME/.config/eww/launch.sh
+# exec_always $HOME/.config/waybar/launch.sh
 
 
 # from /etc/sway/config.d/nixos.conf
+# at the moment here for safe keeping
 # Import the most important environment variables into the D-Bus and systemd
 # user environments (e.g. required for screen sharing and Pinentry prompts):
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 # enable systemd-integration
-exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
-exec swaymsg -t subscribe '["shutdown"]' && systemctl --user stop sway-session.target
+# exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
+# exec swaymsg -t subscribe '["shutdown"]' && systemctl --user stop sway-session.target

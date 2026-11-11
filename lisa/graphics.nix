@@ -3,14 +3,13 @@
 
 { config, lib, pkgs, ... } : {
 
-    /*
     programs.sway = {
         enable = true;
+        package = pkgs.swayfx;
         extraPackages = with pkgs; lib.mkForce [
             slurp
         ];
     };
-    */
 
     hardware.graphics.enable = true;
 

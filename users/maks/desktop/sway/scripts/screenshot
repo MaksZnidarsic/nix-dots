@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+
+f=$HOME/screenshots/$(date +%Y-%m-%d-%H%M%S.png)
+
+function select_area() {
+   grim -g "$(slurp)" $f && cat $f | wl-copy
+}
+
+
+function screen() {
+    grim -o $(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name") $f && cat $f | wl-copy
+}
+
+
+[ $1 = 'select' ] && select_area && exit
+[ $1 = 'screen' ] && screen && exit

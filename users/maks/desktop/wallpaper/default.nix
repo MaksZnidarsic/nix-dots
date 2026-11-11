@@ -13,7 +13,7 @@
     };
     home.file.".config/wallpaper/papers/" = {
         recursive = true;
-        source = ./faye;
+        source = ./cowboy-bebop;
     };
 
 }

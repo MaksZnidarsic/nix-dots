@@ -5,7 +5,7 @@
 
     fonts = {
         packages = with pkgs; [
-            nerd-fonts.ubuntu-mono
+            cm_unicode courier-prime nerd-fonts.ubuntu-mono
         ];
         enableDefaultPackages = true;
 

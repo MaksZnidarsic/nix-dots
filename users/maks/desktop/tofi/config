@@ -2,27 +2,32 @@
 
 
 font = monospace
-font-size = 16
+font-size = 13
 
 text-color = #ffffff
-selection-color = #ffc5d3
+selection-color = #b198d9
 
 min-input-width = 1
 
 
-prompt-text = "> "
+prompt-text = ""
 
 
-background-color = #000A
+anchor = top
 
-width = 100%
-height = 100%
+
+background-color = #000
+
+width = 30%
+height = 10%
 
 border-width = 0
 outline-width = 0
 
-padding-left = 35%
-padding-top = 35%
+padding-top = 5
+padding-bottom = 5
+padding-left = 5
+padding-right = 5
 
 
 hide-cursor = true

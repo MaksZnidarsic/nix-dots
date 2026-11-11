@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+
+[ $(eww get indicator-open) = 'false' ] && eww update indicator-open=true && exit
+eww update indicator-open=false
