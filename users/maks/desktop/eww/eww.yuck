@@ -98,6 +98,8 @@
 ; indicator
 ; has to be disabled in scripts + launch.sh
 
+; NOTE currently disabled -- figuring out some performance issues
+
 
 (defwindow indicator []
   :monitor 0
@@ -132,7 +134,7 @@
 )
 
 
-; system
+; telemetry
 
 
 (defwindow telemetry

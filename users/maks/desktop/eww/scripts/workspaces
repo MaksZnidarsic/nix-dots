@@ -18,5 +18,5 @@ function info() { # does not work w/o echo
 info
 swaymsg -t subscribe '["workspace"]' --monitor | while read -r event; do
     info
-    $HOME/.config/eww/scripts/indicator workspaces 2>/dev/null &
+    # $HOME/.config/eww/scripts/indicator workspaces 2>/dev/null &
 done

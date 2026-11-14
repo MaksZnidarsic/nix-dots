@@ -32,5 +32,5 @@ pactl subscribe | while read -r _ event _ t num; do
     info
     if [[ $(volume) = $last ]]; then continue; fi  
     last=$(volume)  
-    $HOME/.config/eww/scripts/indicator volume &
+    # $HOME/.config/eww/scripts/indicator volume &
 done
