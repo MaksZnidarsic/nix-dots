@@ -37,6 +37,11 @@ configuration {
 
     display-drun : 'drun';
     display-run : ' run';
+
+    window-format : '{c} {t}';
+
+    window { display-name : ''; }
+    combi { display-name : '     '; }
 }
 
 
@@ -51,15 +56,21 @@ window {
 
 
 mainbox {
-    margin : 0 0 0 3px;
+    margin : 0 0 0 5px;
     children : [inputbar, listview];
 }
 
 
 inputbar {
-    margin : 0 0 0 40px;
-    children : [entry];
+    children : [prompt, entry];
 }
+
+
+prompt {
+    // should match the size specified in combi-display-format
+    font : 'mono 12';
+}
+
 
 entry {
     cursor-width : 8;

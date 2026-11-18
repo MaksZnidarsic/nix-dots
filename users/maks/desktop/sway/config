@@ -20,11 +20,12 @@ focus_follows_mouse no
 set $mod Mod1
 
 set $term alacritty
-set $menu rofi -show
+set $menu rofi -show combi
 
 
 bindsym $mod+Return exec $term
 bindsym $mod+d exec --no-startup-id $menu
+bindsym $mod+w exec --no-startup-id rofi -show window
 bindsym $mod+p exec qutebrowser
 
 bindsym $mod+s exec --no-startup-id $HOME/.config/sway/scripts/screenshot select

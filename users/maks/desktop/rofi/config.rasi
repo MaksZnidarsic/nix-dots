@@ -3,7 +3,7 @@
 
 configuration {
 
-    modes : [ combi ];
+    modes : [ combi, window ];
     combi-modes : [ drun, run ];
     disable-history : true;
 
