@@ -7,6 +7,12 @@ configuration {
     combi-modes : [ drun, run ];
     disable-history : true;
 
+    kb-element-next : 'Control+j,Tab';
+    kb-element-prev : 'Control+k,Shift+Tab';
+    // unset
+    kb-accept-entry : 'Return';
+    kb-remove-to-eol : '';
+
 }
 
 

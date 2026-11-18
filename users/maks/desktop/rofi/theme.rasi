@@ -35,10 +35,10 @@ configuration {
     drun-display-format : '{name} <span color="#808080" font-size="11pt" font-style="italic">{generic}</span>';
     drun-match-fields : [name, generic];
 
-    display-drun : 'drun';
-    display-run : ' run';
+    display-drun : ' app';
+    display-run : 'exec';
 
-    window-format : '{c} {t}';
+    window-format : '{t}';
 
     window { display-name : ''; }
     combi { display-name : '     '; }
