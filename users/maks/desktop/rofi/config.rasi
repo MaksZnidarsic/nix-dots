@@ -1,0 +1,13 @@
+
+
+
+configuration {
+
+    modes : [ combi ];
+    combi-modes : [ drun, run ];
+    disable-history : true;
+
+}
+
+
+@theme 'theme'

@@ -13,6 +13,15 @@
 
     hardware.graphics.enable = true;
 
+    xdg.portal = {
+        enable = true;
+        wlr.enable = true;
+
+        extraPortals = with pkgs; [
+            xdg-desktop-portal-gtk
+        ];
+    };
+
     xdg.portal.wlr.settings.screencast = {
         output_name = "eDP-1";
         chooser_type = "simple";  

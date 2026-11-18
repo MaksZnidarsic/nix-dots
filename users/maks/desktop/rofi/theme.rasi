@@ -1,0 +1,86 @@
+
+
+
+* {
+    fg : #ffffff;
+    bg : #000000;
+
+    fg-alt : #000000;
+    bg-alt : #252525;
+
+    subtle : #808080;
+
+    color1 : #c5c2da;
+    color2 : #b198d9;
+    color3 : #67609f;
+    color4 : #ffff99;
+    color5 : #ff964f;
+
+    ok : #a6e3a1;
+    info : #b4cbf0;
+    warning : #ffff99;
+    error : #ff746c;
+
+    
+    background-color : @bg;
+    text-color : @fg;
+}
+
+
+configuration {
+    font : 'mono 13';
+
+    combi-display-format : '<span color="#c5c2da" font-size="12pt">{mode}</span> {text}';
+
+    drun-display-format : '{name} <span color="#808080" font-size="11pt" font-style="italic">{generic}</span>';
+    drun-match-fields : [name, generic];
+
+    display-drun : 'drun';
+    display-run : ' run';
+}
+
+
+window {
+    height:   100%;
+    width: 30em;
+    location: west;
+    anchor: west;
+
+    children : [mainbox];
+}
+
+
+mainbox {
+    margin : 0 0 0 3px;
+    children : [inputbar, listview];
+}
+
+
+inputbar {
+    margin : 0 0 0 40px;
+    children : [entry];
+}
+
+entry {
+    cursor-width : 8;
+}
+
+
+listview {
+}
+
+
+element {
+    children : [element-text];
+}
+
+
+element-text {
+    highlight : bold #b198d9;
+}
+
+
+element-text selected {
+    highlight : underline bold #b198d9;
+    text-color : @color3;
+}
