@@ -9,7 +9,6 @@
         ./rofi
         ./shell
         ./sway
-        ./tofi
         ./wallpaper
     ];
 

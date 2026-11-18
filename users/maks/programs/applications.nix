@@ -7,12 +7,6 @@
     # /etc/profiles/per-user/<user>/share/applications
     # /run/current-system/sw/share/applications
     xdg.desktopEntries = {
-
-        shutdown = {
-            name = "Shutdown";
-            exec = "shutdown now";
-        };
-
     };
 
     xdg.mimeApps = {
